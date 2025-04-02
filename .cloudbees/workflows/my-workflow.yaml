@@ -32,7 +32,7 @@ jobs:
               | Test   | Results |
               |--------|---------|
               | Test 1 | PASS    |
-              | Test 2 | FAIL    |
+              | Test 2 | FAIL    | 
               | Test 3 | PASS    |
 
               > All builds are green
