@@ -3,15 +3,19 @@ kind: workflow
 name: My workflow
 
 on:
-  push:
-    branches:
-      - '**'
+  workflow_dispatch:
 
 jobs:
   build:
     steps:
-      - name: Say hello
-        uses: docker://golang:1.20.3-alpine3.17
-        shell: sh
-        run: |
+    - name: Dispatch workflows
+      uses: cloudbees-io/workflows-dispatch@v1
+      with:
+            workflows-dispatch-file: dispatch_requests.json
+            token: "${{ secrets.CBP_API_PAT }}"
+
+    - name: Say hello
+      uses: docker://golang:1.20.3-alpine3.17
+      shell: sh
+      run: |
           echo "hello world"
