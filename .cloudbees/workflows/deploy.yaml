@@ -9,18 +9,17 @@ on:
         type: string
         required: true
       environment:
-         type: string
-         required: true  
+        type: string
+        required: true
 
 jobs:
   deploy-app1:
     steps:
       - name: Deploy cbpautomation/python-hello-world-docker
-        if: ${{ fromJSON(inputs.manifest).["cbpautomation/python-hello-world-docker"].deploy }}
+        if: ${{ fromJSON(inputs.manifest)['cbpautomation/python-hello-world-docker'].deploy }}
         uses: cloudbees-io/register-deployed-artifact@v1
         with:
           name: "cbpautomation/python-hello-world-docker"
-          version: "${{ fromJSON(inputs.manifest).["cbpautomation/python-hello-world-docker"].version }}"
-          url: "${{ fromJSON(inputs.manifest).cbpautomation/python-hello-world-docker.url }}"
+          version: "${{ fromJSON(inputs.manifest)['cbpautomation/python-hello-world-docker'].version }}"
+          url: "${{ fromJSON(inputs.manifest)['cbpautomation/python-hello-world-docker'].url }}"
           target-environment: "${{ inputs.environment }}"
-     
