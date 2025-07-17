@@ -15,15 +15,6 @@ on:
 jobs:
   deploy-app1:
     steps:
-      - name: Inform system that an artifact version was created
-        if: ${{ fromJSON(inputs.manifest)['cbpautomation/python-hello-world-docker'].deploy }}
-        uses: cloudbees-io/register-build-artifact@v1
-        with:
-          name: "cbpautomation/python-hello-world-docker"
-          version: "${{ fromJSON(inputs.manifest)['cbpautomation/python-hello-world-docker'].version }}"
-          url: "${{ fromJSON(inputs.manifest)['cbpautomation/python-hello-world-docker'].url }}"
-          digest: "${{ fromJSON(inputs.manifest)['cbpautomation/python-hello-world-docker'].digest }}"
-          
       - name: Deploy cbpautomation/python-hello-world-docker
         if: ${{ fromJSON(inputs.manifest)['cbpautomation/python-hello-world-docker'].deploy }}
         uses: cloudbees-io/register-deployed-artifact@v1
