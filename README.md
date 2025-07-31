@@ -1,4 +1,4 @@
-# preprod-python-helloworld
+# QA-python-helloworld
 Sample Python + Alpine project to run "Hello World" inside a Docker container.
 
 ## Prerequisites
